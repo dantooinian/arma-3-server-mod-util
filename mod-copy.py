@@ -10,8 +10,8 @@ from functions import *
 
 # define path variables from values
 dotenv.load_dotenv()
-local_path = os.getenv('local_path').strip("r")
-server_path = os.getenv('server_path').strip("r")
+local_path = os.getenv('local_path')
+server_path = os.getenv('server_path')
 
 # define the set of mods to work from
 mod_dictionary = csv_dict_builder('modlist.csv')
