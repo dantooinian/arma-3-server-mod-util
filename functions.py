@@ -72,7 +72,7 @@ def hash_gen(file):
         an MD5 hash based on the processed file
     """
 
-    with open(file, 'b+r') as f:
+    with open(file.strip("r\""), 'b+r') as f:
         file_bytes = f.read()
         return hashlib.md5(file_bytes).hexdigest()
 
@@ -97,7 +97,7 @@ def key_folder_path_generator(base_path, mod_dict):
     key_folder_paths = []
 
     for key in mod_dict.keys():
-        key_folder_paths.append(base_path.strip("\"") + "\\" + key)
+        key_folder_paths.append(base_path.strip("\"") + key)
 
     return key_folder_paths
 
@@ -123,7 +123,7 @@ def value_folder_path_generator(base_path, mod_dict):
     value_file_paths = []
 
     for value in mod_dict.keys():
-        value_file_paths.append(base_path.strip("\"") + "\\" + mod_dict[value])
+        value_file_paths.append(base_path.strip("\"") + mod_dict[value])
 
     return value_file_paths
 
@@ -149,7 +149,7 @@ def key_file_path_generator(base_path, mod_dict):
     key_file_paths = []
 
     for key in mod_dict.keys():
-        key_file_paths.append(base_path.strip("\"") + "\\" + key + "\\meta.cpp")
+        key_file_paths.append(base_path.strip("\"") + key + "/meta.cpp")
 
     return key_file_paths
 
@@ -178,7 +178,7 @@ def value_file_path_generator(base_path, mod_dict):
     value_file_paths = []
 
     for value in mod_dict.keys():
-        value_file_paths.append(base_path.strip("\"") + "\\" + mod_dict[value] + "\\meta.cpp")
+        value_file_paths.append(base_path.strip("\"") + mod_dict[value] + "/meta.cpp")
 
     return value_file_paths
 
@@ -235,4 +235,4 @@ def mod_copy(local_path, server_path, mod_dictionary):
             print("update needed... done")
             i += 1
 
-    print("copy complete")
+    print("process complete")
